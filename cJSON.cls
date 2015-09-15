@@ -7,26 +7,23 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
-' Name: JSON parser class
+' Name: cJSON
+' Description: JSON parser class for VBA (Visual Basic for Applications)
 ' Author: José Román Porras Cebriá
+' EMail: j.romanporras@gmail.com
 '
 ' Dependencies: Early binding of "Microsoft Scripting Runtime"
 '
 ' Methods:
-'   .Encode()       Encodes input Dictionary into JSON
-'   .Decode()       Decodes input JSON into Dictionary
+'   .Encode()         Encodes input Dictionary into JSON
+'   .Decode()         Decodes input JSON into Dictionary
 ' Properties:
-'   .toDictionary   Returns original Encoded/Decoded input as Dictionary
-'   .toString       Returns original Encoded/Decoded input as JSON String
+'   .toDictionary     Returns the last input as Dictionary
+'   .toString         Returns the last input as JSON String
+'   .toHumanReadable  Returns the last input as an indented JSON string, for printing or screen visualization
 '
 Option Compare Binary
 Option Explicit
-
-'Private Const TOKEN_TFN As String = "TOKEN_TFN"
-'Private Const TOKEN_NUM As String = "TOKEN_NUM"
-'Private Const TOKEN_STR As String = "TOKEN_STR"
-'Private Const TOKEN_ARR As String = "TOKEN_ARR"
-'Private Const TOKEN_OBJ As String = "TOKEN_OBJ"
 
 Private FLAG_ERR As Boolean
 
@@ -282,7 +279,7 @@ End Function
 
 Private Function jsonParseNumber(json As String, n As Integer) As Double
 ' TODO: Allow exponential numbers like 123.45e+6
-' TODO: Control lons strings of numbers
+' TODO: Control long strings of numbers
     Dim t As String, _
         done As Boolean, _
         value As String, _
